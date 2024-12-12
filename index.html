@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodify</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 2rem; }
+        #playlist { margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <h1>Moodify 🎵</h1>
+    <p>Enter your mood, and we’ll find the perfect playlist for you!</p>
+    <input type="text" id="mood" placeholder="e.g., happy, chill" />
+    <button onclick="getPlaylist()">Generate Playlist</button>
+    <div id="playlist"></div>
+
+    <script>
+        async function getPlaylist() {
+            const mood = document.getElementById("mood").value;
+            const response = await fetch("http://127.0.0.1:5000/generate_playlist", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ mood })
+            });
+
+            const data = await response.json();
+            const playlistDiv = document.getElementById("playlist");
+            playlistDiv.innerHTML = response.ok
+                ? `<h3>${data.name}</h3><a href="${data.url}" target="_blank">Open Playlist</a>`
+                : `<p>${data.error}</p>`;
+        }
+    </script>
+</body>
+</html>
