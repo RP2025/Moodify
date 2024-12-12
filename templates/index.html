@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Moodify - Your Mood, Your Music</h1>
+    <form action="{{ url_for('search') }}" method="POST">
+        <label for="language">Select Language:</label>
+        <select name="language" id="language">
+            <option value="English">English</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Hindi">Hindi</option>
+            <option value="French">French</option>
+        </select>
+        <label for="query">Enter Query (mood/genre):</label>
+        <input type="text" name="query" id="query" placeholder="e.g., happy, chill" required>
+        <input type="submit" value="Search Songs">
+    </form>
+</body>
+</html>

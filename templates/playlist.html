@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Created</title>
+</head>
+<body>
+    <h1>Playlist Created Successfully!</h1>
+    <p>Playlist Name: {{ playlist_name }}</p>
+    <p>Click below to listen to your playlist:</p>
+    <a href="{{ playlist_link }}" target="_blank">{{ playlist_link }}</a>
+    <br><br>
+    <a href="{{ url_for('create_playlist') }}">Create Another Playlist</a>
+</body>
+</html>
